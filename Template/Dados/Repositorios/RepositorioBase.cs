@@ -9,31 +9,31 @@ namespace Template.Dados.Repositorios
         where TContexto : DbContext
         where TEntidade : class
     {
-        private readonly TContexto _contexto;
+        protected readonly TContexto Contexto;
 
         public RepositorioBase(TContexto contexto)
         {
-            _contexto = contexto;
+            Contexto = contexto;
         }
 
         public TEntidade ObterPorId(int id)
         {
-            return _contexto.Set<TEntidade>().Find(id);
+            return Contexto.Set<TEntidade>().Find(id);
         }
 
         public List<TEntidade> ListarTodos()
         {
-            return _contexto.Set<TEntidade>().ToList();
+            return Contexto.Set<TEntidade>().ToList();
         }
 
         public Task<TEntidade> ObterPorIdAssincrono(int id)
         {
-            return _contexto.Set<TEntidade>().FindAsync(id);
+            return Contexto.Set<TEntidade>().FindAsync(id);
         }
 
         public async Task<List<TEntidade>> ListarTodosAssincrono()
         {
-            return await _contexto.Set<TEntidade>().ToListAsync();
+            return await Contexto.Set<TEntidade>().ToListAsync();
         }
     }
 }
