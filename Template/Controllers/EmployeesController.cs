@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Template.Dados;
+using Template.Auxiliares;
 using Template.Dados.Entidades;
 using Template.Dados.Repositorios;
 
@@ -13,39 +11,17 @@ namespace Template.Controllers
     [ApiController]
     public class EmployeesController : ControllerBase
     {
-        private readonly IRepositorioBase<HrContext, Employee> _repositorio;
+        private readonly IRepositorioEmployee _repositorio;
 
-        public EmployeesController(IRepositorioBase<HrContext, Employee> repositorio)
+        public EmployeesController(IRepositorioEmployee repositorio)
         {
             _repositorio = repositorio;
         }
 
-
-        //public ActionResult<List<Employee>> Obter()
-        //{
-        //    List<Employee> employees;
-
-        //    using (var contexto = new HrContext())
-        //    {
-        //        employees = contexto.Employees.ToList();
-        //    }
-
-        //    return employees;
-        //}
-
         [HttpGet]
-        public async Task<ActionResult<List<Employee>>> ObterAsync()
+        public async Task<ActionResult<List<Employee>>> ObterAsync([FromQuery] ParametrosEmployee parametros)
         {
-            //List<Employee> employees;
-
-            //using (var contexto = new HrContext())
-            //{
-            //    employees = await contexto.Employees.ToListAsync().ConfigureAwait(false);
-            //}
-
-            //return employees;
-
-            return await _repositorio.ListarTodosAssincrono().ConfigureAwait(false);
+            return await _repositorio.ListarEmployeesdAssincrono(parametros).ConfigureAwait(false);
         }
 
         [HttpGet("{id}")]

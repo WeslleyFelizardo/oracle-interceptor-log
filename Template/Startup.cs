@@ -23,6 +23,7 @@ namespace Template
             // services.AddScoped<MigrationContext>();
 
             services.AddScoped(typeof(IRepositorioBase<,>), typeof(RepositorioBase<,>));
+            services.AddScoped(typeof(IRepositorioEmployee), typeof(RepositorioEmployee));
 
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

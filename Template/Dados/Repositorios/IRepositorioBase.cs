@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Threading.Tasks;
+using Template.Auxiliares;
 
 namespace Template.Dados.Repositorios
 {
