@@ -115,7 +115,7 @@ namespace Template.Dados
                 parametros.Add(param.ParameterName, param.Value.ToString());
             }
 
-            return parametros.Select(p => ":" + p.Key + " " + p.Value);
+            return parametros.Select(p => ":" + p.Key + " = " + p.Value);
         }
 
         private double ArrendondarTempoExecucaoComandoSql(double tempo)
